@@ -1,2 +1,4 @@
 # data-science-JH
-code repo for Johns Hopkins data science MOOC 
+## info
+this is my code repo for Johns Hopkins data science MOOC
+## overview
