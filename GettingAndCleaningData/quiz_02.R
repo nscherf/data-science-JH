@@ -34,7 +34,7 @@ dat <- content(req)
 library(jsonlite)
 dat <- jsonlite::fromJSON(toJSON(dat))
 
-#read html 
+#read html
 #example
 con = url("http://biostat.jhsph.edu/~jleek/contact.html")
 htmlCode <- readLines(con)
@@ -50,7 +50,7 @@ url <- "http://biostat.jhsph.edu/~jleek/contact.html"
 html <- htmlTreeParse(url, useInternalNodes=T)
 #xpathSApply(html,"//", xmlValue)
 
-#fixed width file format 
+#fixed width file format
 #negative column widths are used to skip these cols
-ff <- read.fwf("./dev/datasciencecoursera/GettingAndCleaningData/data/wksst8110.for", widths=c(-1,9,-5,4,4,-5,4,4,-5,4,4,-5,4,4), skip=4)
+ff <- read.fwf("~/dev/datasciencecoursera/GettingAndCleaningData/data/wksst8110.for", widths=c(-1,9,-5,4,4,-5,4,4,-5,4,4,-5,4,4), skip=4)
 sum(ff[4])
