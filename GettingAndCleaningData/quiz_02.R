@@ -1,11 +1,5 @@
-#mySQL part
-library(sqldf)
-
-acs <- read.csv("~/dev/datasciencecoursera/GettingAndCleaningData/data/ss06pid.csv", stringsAsFactors=FALSE)
-sqldf("select pwgtp1 from acs where AGEP < 50")
-
 #API tests - this is only the template from https://github.com/hadley/httr/blob/master/demo/oauth2-github.r
-
+#TODO: FIX ME
 library(httr)
 # 1. Find OAuth settings for github:
 #    http://developer.github.com/v3/oauth/
@@ -16,7 +10,7 @@ oauth_endpoints("github")
 #
 #    Insert your client ID and secret below - if secret is omitted, it will
 #    look it up in the GITHUB_CONSUMER_SECRET environmental variable.
-myapp <- oauth_app("github", "ccb8633d9dc74700fd85", "4f849191de7a2d5c0912f7f83c03afc839c696a9")
+myapp <- oauth_app("github", "xxx", "xxx")
 # 3. Get OAuth credentials
 github_token <- oauth2.0_token(oauth_endpoints("github"), myapp)
 # 4. Use API
@@ -24,15 +18,16 @@ gtoken <- config(token = github_token)
 req <- GET("https://api.github.com/users/jtleek/repos", gtoken)
 stop_for_status(req)
 content(req)
-
-# OR:
-req <- with_config(gtoken, GET("https://api.github.com/rate_limit"))
-stop_for_status(req)
-content(req)
-
 dat <- content(req)
 library(jsonlite)
 dat <- jsonlite::fromJSON(toJSON(dat))
+
+#mySQL part
+library(sqldf)
+
+acs <- read.csv("~/dev/datasciencecoursera/GettingAndCleaningData/data/ss06pid.csv", stringsAsFactors=FALSE)
+sqldf("select pwgtp1 from acs where AGEP < 50")
+sqldf("select distinct AGEP from acs")
 
 #read html
 #example

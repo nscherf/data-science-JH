@@ -14,6 +14,7 @@ count(res)
 #to be fixed
 library(xlsx)
 dat = read.xlsx("./data/DATA.gov_NGAP.xlsx", sheetIndex = 1, header = TRUE, colIndex = 7:15, rowIndex = 18:23)
+sum(dat$Zip*dat$Ext, na.rm=T)
 
 #xml data
 library(XML)
